@@ -11,10 +11,13 @@ namespace OdeToFood.Web.Controllers
     public class GreetingController : Controller
     {
         // GET: Greeting
-        public ActionResult Index()
+        public ActionResult Index(string name)
         {
-            var model = new GreetingViewModel();
-            model.Message = ConfigurationManager.AppSettings["message"];
+            var model = new GreetingViewModel
+            {
+                Name = name ?? "No name",
+                Message = ConfigurationManager.AppSettings["message"]
+            };
             return View(model);
         }
     }
